@@ -1,9 +1,8 @@
 
 REPOSITORY=cybermaggedon/accumulo
-VERSION=$(shell git describe | sed 's/^v//')
-ZOOKEEPER_VERSION=3.6.1
-HADOOP_VERSION=2.10.0
-ACCUMULO_VERSION=1.9.3
+ZOOKEEPER_VERSION=3.4.8
+HADOOP_VERSION=2.9.2
+ACCUMULO_VERSION=1.10.1
 DOCKER=docker
 
 SUDO=
@@ -15,12 +14,12 @@ DOWNLOADS=accumulo-${ACCUMULO_VERSION}-bin.tar.gz \
   zookeeper-${ZOOKEEPER_VERSION}.tar.gz hadoop-${HADOOP_VERSION}.tar.gz
 
 all: ${DOWNLOADS}
-	${SUDO} ${DOCKER} build ${BUILD_ARGS} -t ${REPOSITORY}:${VERSION} .
-	${SUDO} ${DOCKER} tag ${REPOSITORY}:${VERSION} ${REPOSITORY}:latest
+	${SUDO} ${DOCKER} build ${BUILD_ARGS} -t ${REPOSITORY}:${ACCUMULO_VERSION} .
+	${SUDO} ${DOCKER} tag ${REPOSITORY}:${ACCUMULO_VERSION} ${REPOSITORY}:latest
 
 # FIXME: May not be the right mirror for you.
 zookeeper-${ZOOKEEPER_VERSION}.tar.gz:
-	wget -O $@ http://apache.mirror.anlx.net/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/apache-zookeeper-${ZOOKEEPER_VERSION}-bin.tar.gz
+	wget -O $@ https://archive.apache.org/dist/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz
 
 # FIXME: May not be the right mirror for you.
 accumulo-${ACCUMULO_VERSION}-bin.tar.gz:
@@ -28,7 +27,7 @@ accumulo-${ACCUMULO_VERSION}-bin.tar.gz:
 
 # FIXME: May not be the right mirror for you.
 hadoop-${HADOOP_VERSION}.tar.gz:
-	wget -O $@ http://www.mirrorservice.org/sites/ftp.apache.org/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz
+	wget -O $@ https://archive.apache.org/dist/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz
 
 push:
 	${SUDO} ${DOCKER} push ${REPOSITORY}:${VERSION}
