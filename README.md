@@ -30,6 +30,13 @@ Default Accumulo root password is `accumulo`.  To check it works:
 ```
 ... and you should see a list of tables.
 
+Si quieres renombrar el camino usado en HDFS y tambien el nombre de la instancia de accumulo,
+puedes usar el siguiente comando:
+
+```
+docker run -d --name accumulo -e INSTANCE_NAME=accumulo-1.10.1 -e HDFS_VOLUMES=hdfs://hadoop:9000/accumulo-1.10.1 -p 9995:9995 -p 9997:9997 -p 9999:9999 --link hadoop:hadoop --link zookeeper:zookeeper cybermaggedon/accumulo:1.10.1 /start-accumulo
+```
+
 If you want to persist Accumulo you will need to ensure Hadoop and Zookeeper
 are persistent.  Here we are using /data/hadoop and /data/zookeeper as
 persistent volumes.
