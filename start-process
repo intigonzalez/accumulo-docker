@@ -139,4 +139,4 @@ done
 . /usr/local/accumulo/bin/config.sh
 . /usr/local/accumulo/bin/config-server.sh
 
-/usr/local/accumulo/bin/accumulo $1 --address ${MY_HOSTNAME}
+/usr/local/accumulo/bin/accumulo $1

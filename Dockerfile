@@ -27,7 +27,7 @@ ADD accumulo/* $ACCUMULO_HOME/conf/
 ADD start-accumulo /start-accumulo
 ADD start-process /start-process
 
-CMD /start-accumulo
+CMD ["/start-accumulo"]
 
 EXPOSE 9000 50095 42424 9995 9997
 

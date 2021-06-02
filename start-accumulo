@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 rewrite() {
     cat $1 | \
@@ -138,14 +138,9 @@ done
 
 /usr/local/accumulo/bin/start-here.sh
 
+trap '/usr/local/accumulo/bin/stop-all.sh && exit 0' SIGTERM
+
 while true
 do
     sleep 100000
 done
-
-#<configuration>
-#  <property>
-#    <name>fs.defaultFS</name>
-#    <value>hdfs://hadoop:9000/</value>
-#  </property>
-#</configuration>
