@@ -29,5 +29,5 @@ ADD start-process /start-process
 
 CMD ["/start-accumulo"]
 
-EXPOSE 9000 50095 42424 9995 9997
+EXPOSE 9999 50095 42424 9995 9997
 
