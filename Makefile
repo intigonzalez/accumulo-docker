@@ -3,7 +3,13 @@ REPOSITORY=cybermaggedon/accumulo
 ZOOKEEPER_VERSION=3.4.8
 HADOOP_VERSION=2.9.2
 ACCUMULO_VERSION=1.10.1
-DOCKER=docker
+DOCKER=podman
+
+# TODO
+# - do -D and -S in both the docker container and the host as described in https://man7.org/linux/man-pages/man5/ext4.5.html
+#    https://linux.die.net/man/8/mount
+#    http://hadoop-hbase.blogspot.com/2013/07/protected-hbase-against-data-center.html
+# - fix how accumulo is shutted down
 
 SUDO=
 BUILD_ARGS=--build-arg ZOOKEEPER_VERSION=${ZOOKEEPER_VERSION} \
