@@ -3,7 +3,7 @@ REPOSITORY=cybermaggedon/accumulo
 ZOOKEEPER_VERSION=3.4.8
 HADOOP_VERSION=2.9.2
 ACCUMULO_VERSION=1.10.1
-DOCKER=podman
+DOCKER=docker
 
 # TODO
 # - do -D and -S in both the docker container and the host as described in https://man7.org/linux/man-pages/man5/ext4.5.html
